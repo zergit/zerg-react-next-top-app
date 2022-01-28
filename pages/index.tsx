@@ -1,9 +1,11 @@
 //import Image from 'next/image';
 import React, { useState } from 'react';
 import { Button, Htag, P, Rating, Tag } from '../components';
+import { withLayout } from '../layuot/Layout';
 
 
-export default function Home(): JSX.Element {
+
+function Home(): JSX.Element {
   const [rating, setRating] = useState<number>(4);
 
 
@@ -23,3 +25,5 @@ export default function Home(): JSX.Element {
     </>
   );
 }
+
+export default withLayout(Home);
