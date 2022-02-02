@@ -32,6 +32,14 @@
 	font-weight: bold;
 }
 
+
+.grey {
+	color: var(--white);
+	background: #51648C;
+
+	font-weight: bold;
+}
+
 .green {
 	color: var(--green);
 	background: var(--green-light);
