@@ -107,7 +107,7 @@ export const Menu = (): JSX.Element => {
 		return (
 			pages.map(p => (
 				<motion.li key={p._id} variants={variantsChildren}>
-					<Link href={`/${route}/${p.alias}`}>
+					<Link href={`/${route}/${p.alias}`} key={p._id}>
 						<a
 							tabIndex={isOpened ? 0 : -1}
 							className={cn(styles.thirdLevel, {
