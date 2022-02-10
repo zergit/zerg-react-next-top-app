@@ -1,16 +1,16 @@
-import styles from './TopPageComponent.module.css';
+import { Advantages, Htag, P, Product, Sort, Tag } from '../../components';
 import { TopPageComponentProps } from './TopPageComponent.props';
-import { Advantages, HhData, Htag, Product, Sort, Tag } from '../../components';
+import styles from './TopPageComponent.module.css';
+import { HhData } from '../../components';
 import { TopLevelCategory } from '../../interfaces/page.interface';
 import { SortEnum } from '../../components/Sort/Sort.props';
-import { useReducer, useEffect } from 'react';
+import { useEffect, useReducer } from 'react';
 import { sortReducer } from './sort.reducer';
-
-
+import { useReducedMotion } from 'framer-motion';
 
 export const TopPageComponent = ({ page, products, firstCategory }: TopPageComponentProps): JSX.Element => {
 	const [{ products: sortedProducts, sort }, dispathSort] = useReducer(sortReducer, { products, sort: SortEnum.Rating });
-
+	const shouldReduceMotion = useReducedMotion();
 
 	const setSort = (sort: SortEnum) => {
 		dispathSort({ type: sort });
@@ -23,20 +23,20 @@ export const TopPageComponent = ({ page, products, firstCategory }: TopPageCompo
 	return (
 		<div className={styles.wrapper}>
 			<div className={styles.title}>
-				<Htag tag='h1' >{page.title}</Htag>
-				{products && <Tag color='grey' size='m'>{products.length}</Tag>}
+				<Htag tag='h1'>{page.title}</Htag>
+				{products && <Tag color='grey' size='m' aria-label={products.length + 'элементов'}>{products.length}</Tag>}
 				<Sort sort={sort} setSort={setSort} />
 			</div>
-			<div>
-				{sortedProducts && sortedProducts.map(p => (<Product layout key={p._id} product={p} />))}
+			<div role='list'>
+				{sortedProducts && sortedProducts.map(p => (<Product role='listitem' layout={shouldReduceMotion ? false : true} key={p._id} product={p} />))}
 			</div>
 			<div className={styles.hhTitle}>
-				<Htag tag='h2' >Вакансии - {page.category}</Htag>
+				<Htag tag='h2'>Вакансии - {page.category}</Htag>
 				<Tag color='red' size='m'>hh.ru</Tag>
 			</div>
-			{firstCategory == TopLevelCategory.Courses && page.hh && <HhData  {...page.hh} />}
+			{firstCategory == TopLevelCategory.Courses && page.hh && <HhData {...page.hh} />}
 			{page.advantages && page.advantages.length > 0 && <>
-				<Htag tag='h2'>Преимущества</Htag>
+				<Htag tag='h2'>Преимущства</Htag>
 				<Advantages advantages={page.advantages} />
 			</>
 			}
@@ -44,6 +44,5 @@ export const TopPageComponent = ({ page, products, firstCategory }: TopPageCompo
 			<Htag tag='h2'>Получаемые навыки</Htag>
 			{page.tags.map(t => <Tag key={t} color='primary'>{t}</Tag>)}
 		</div>
-
 	);
 };

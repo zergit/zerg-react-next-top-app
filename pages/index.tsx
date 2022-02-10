@@ -1,16 +1,13 @@
-//import Image from 'next/image';
-import axios from 'axios';
 import { GetStaticProps } from 'next';
 import React, { useState } from 'react';
 import { Button, Htag, Input, P, Rating, Tag, Textarea } from '../components';
+import { withLayout } from '../layout/Layout';
+import axios from 'axios';
 import { MenuItem } from '../interfaces/menu.interface';
-import { withLayout } from '../layuot/Layout';
 import { API } from '../helpers/api';
-
 
 function Home({ menu }: HomeProps): JSX.Element {
   const [rating, setRating] = useState<number>(4);
-
 
   return (
     <>
@@ -23,11 +20,10 @@ function Home({ menu }: HomeProps): JSX.Element {
       <Tag size='s'>Ghost</Tag>
       <Tag size='m' color='red'>Red</Tag>
       <Tag size='s' color='green'>Green</Tag>
-      <Tag color='primary' >Green</Tag>
+      <Tag color='primary'>Green</Tag>
       <Rating rating={rating} isEditable setRating={setRating} />
-      <Input placeholder='Имя' />
-      <Textarea placeholder='Текст отзыва' />
-
+      <Input placeholder='тест' />
+      <Textarea placeholder='тест area' />
     </>
   );
 }

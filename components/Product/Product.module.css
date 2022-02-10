@@ -14,7 +14,6 @@
 	grid-row: 1 / span 2;
 }
 
-
 .title,
 .tags {
 	grid-column: titlestart / middle;
@@ -49,13 +48,6 @@
 	grid-column: start / middle;
 }
 
-.advBlock {
-	font-size: 16px;
-	line-height: 22px;
-	grid-column: middle / end;
-}
-
-
 .logo img {
 	border-radius: 5px;
 }
@@ -68,6 +60,10 @@
 	line-height: 27px;
 }
 
+.category {
+	margin-top: 7px;
+}
+
 .price,
 .credit {
 	align-self: flex-end;
@@ -76,8 +72,24 @@
 	line-height: 27px;
 }
 
+.month {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+.oldPrice {
+	margin-left: 5px;
+}
+
 .rating {
 	align-self: flex-end;
+}
+
+.description {
+	margin-bottom: 15px;
+
+	font-size: 16px;
+	line-height: 24px;
 }
 
 .priceTitle,
@@ -88,30 +100,14 @@
 	line-height: 19px;
 }
 
-.month {
-	font-size: 14px;
-	line-height: 19px;
-}
-
-
-.oldPrice {
-	margin-left: 5px;
-}
-
-.category {
-	margin-top: 7px;
-}
-
-
-.description {
-	margin-bottom: 15px;
-
-	font-size: 16px;
-	line-height: 24px;
-}
-
 .reviewButton {
 	margin-left: 20px;
+}
+
+.advBlock {
+	font-size: 16px;
+	line-height: 22px;
+	grid-column: middle / end;
 }
 
 .advTitle {
@@ -151,7 +147,7 @@
 
 .characteristicsDots {
 	margin-bottom: 5px;
-	margin-top: 20px;
+
 	border-bottom: 1px dashed var(--gray-light);
 }
 
@@ -248,7 +244,35 @@
 	}
 }
 
+@media screen and (max-width: 640px) {
+	.product {
+		grid-template-columns: 70px 30px 1fr;
+		grid-template-areas:
+			"logo . title"
+			"logo . tags"
+			"priceTitle priceTitle price"
+			"creditTitle creditTitle credit"
+			"rateTitle rateTitle rating"
+			"hr hr hr"
+			"description description description"
+			"feature feature feature"
+			"advBlock advBlock advBlock"
+			"hr2 hr2 hr2"
+			"actions actions actions";
+	}
 
+	.price {
+		margin-bottom: 10px;
+	}
+
+	.credit {
+		margin-bottom: 10px;
+	}
+
+	.rating {
+		margin-bottom: 10px;
+	}
+}
 
 @media screen and (max-width: 480px) {
 	.product {
