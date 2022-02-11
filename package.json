@@ -5,6 +5,7 @@
     "prepare": "husky install",
     "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "debug": "NODE_OPTIONS='--inspect' next dev",
+    "export": "next export",
     "build": "next build",
     "start": "next start",
     "stylelint": "stylelint \"**/*.css\" --fix"
